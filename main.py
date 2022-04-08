@@ -53,29 +53,13 @@ def preprocess(model_args, data_args, training_args, datasets,tokenizer):
     def default_linearize_table_context(table_array, question):
         return '[CLS]'+question+'[CLS]'+('[SEP]'.join([' '.join(row) for row in table_array]))
     linearize_method = default_linearize_table_context
-    if training_args.do_train:
-        column_names = datasets["train"].column_names
-    elif training_args.do_predict:
-        column_names = datasets["test"].column_names
-    else:
-        return
-    text_column = data_args.text_column
-    summary_column = data_args.summary_column
-    context_column = data_args.context_column
-
-
     def preprocess_function(examples):
-        max_target_length = data_args.max_target_length
-        padding = "max_length"
         prefix = data_args.source_prefix if data_args.source_prefix is not None else "summarize: "
-        
-        inputs = [linearize_method(table, question) for table,question in zip(examples[text_column],examples[context_column])]
-        targets = examples[summary_column]
+        inputs = [linearize_method(table, question) for table,question in zip(examples[data_args.text_column],examples[data_args.context_column])]
         inputs = [prefix + inp for inp in inputs]
-        model_inputs = tokenizer(inputs, max_length=data_args.max_source_length, padding=padding, truncation=True)
-
+        model_inputs = tokenizer(inputs, max_length=data_args.max_source_length, padding="max_length", truncation=True)
         with tokenizer.as_target_tokenizer():
-            labels = tokenizer(targets, max_length=max_target_length, padding=padding, truncation=True)
+            labels = tokenizer(examples[data_args.summary_column], max_length=data_args.max_target_length, padding="max_length", truncation=True)
         model_inputs["labels"] = [[(l if l != tokenizer.pad_token_id else -100) for l in label] for label in labels["input_ids"]]
         return model_inputs
 
@@ -83,25 +67,21 @@ def preprocess(model_args, data_args, training_args, datasets,tokenizer):
     test_dataset = None
     if training_args.do_train:
         train_dataset = datasets["train"]
-        if "train" not in datasets:
-            raise ValueError("--do_train requires a train dataset")
         train_dataset = train_dataset.map(
             preprocess_function,
             batched=True,
             num_proc=None,
-            remove_columns=column_names,
+            remove_columns=datasets["train"].column_names,
             load_from_cache_file=True,
         )
 
     if training_args.do_predict:
-        if "test" not in datasets:
-            raise ValueError("--do_predict requires a test dataset")
         test_dataset = datasets["test"]
         test_dataset = test_dataset.map(
             preprocess_function,
             batched=True,
             num_proc=None,
-            remove_columns=column_names,
+            remove_columns=datasets["train"].column_names,
             load_from_cache_file=not data_args.overwrite_cache,
         )
     return train_dataset, test_dataset
@@ -135,9 +115,9 @@ def main(model_args, data_args, training_args):
                 model_args.model_name_or_path,
                 from_tf=bool(".ckpt" in model_args.model_name_or_path),
                 config=config,
-                cache_dir=None,#model_args.cache_dir,
-                revision="main",#model_args.model_revision,
-                use_auth_token=None,#True if model_args.use_auth_token else None,
+                cache_dir=None,
+                revision="main",
+                use_auth_token=None,
             )
     
     trainer = Seq2SeqTrainer(
@@ -152,16 +132,6 @@ def main(model_args, data_args, training_args):
     last_checkpoint = None
     if os.path.isdir(training_args.output_dir) and training_args.do_train and not training_args.overwrite_output_dir:
             last_checkpoint = get_last_checkpoint(training_args.output_dir)
-            if last_checkpoint is None and len(os.listdir(training_args.output_dir)) > 0:
-                raise ValueError(
-                    f"Output directory ({training_args.output_dir}) already exists and is not empty. "
-                    "Use --overwrite_output_dir to overcome."
-                )
-            elif last_checkpoint is not None:
-                print(
-                    f"Checkpoint detected, resuming training at {last_checkpoint}. To avoid this behavior, change "
-                    "the `--output_dir` or add `--overwrite_output_dir` to train from scratch."
-                )
     
     if training_args.do_train:
         if last_checkpoint is not None:
@@ -179,10 +149,7 @@ def main(model_args, data_args, training_args):
         if trainer.is_world_process_zero():
             metrics_formatted = trainer.metrics_format(metrics)
             print("***** train metrics *****")
-            k_width = max(len(str(x)) for x in metrics_formatted.keys())
-            v_width = max(len(str(x)) for x in metrics_formatted.values())
-            for key in sorted(metrics_formatted.keys()):
-                print(f"  {key: <{k_width}} = {metrics_formatted[key]:>{v_width}}")
+            print(metrics_formatted)
             save_json(metrics, os.path.join(training_args.output_dir, "train_results.json"))
             trainer.state.save_to_json(os.path.join(training_args.output_dir, "trainer_state.json"))
 
@@ -192,23 +159,18 @@ def main(model_args, data_args, training_args):
         test_dataset,
         metric_key_prefix="test",
         max_length=data_args.max_target_length,
-        num_beams=None, ##
+        num_beams=None,
     )
     metrics = test_results.metrics
     metrics["test_samples"] = len(test_dataset)
     if trainer.is_world_process_zero():
         metrics_formatted = trainer.metrics_format(metrics)
         print("***** test metrics *****")
-        k_width = max(len(str(x)) for x in metrics_formatted.keys())
-        v_width = max(len(str(x)) for x in metrics_formatted.values())
-        for key in sorted(metrics_formatted.keys()):
-            print(f"  {key: <{k_width}} = {metrics_formatted[key]:>{v_width}}")
+        print(metrics_formatted)
         save_json(metrics, os.path.join(training_args.output_dir, "test_results.json"))
 
         print("generating predictions")
-        test_preds = tokenizer.batch_decode(
-            test_results.predictions, skip_special_tokens=True, clean_up_tokenization_spaces=True
-        )
+        test_preds = tokenizer.batch_decode(test_results.predictions, skip_special_tokens=True, clean_up_tokenization_spaces=True)
         test_preds = [pred.strip() for pred in test_preds]
         
         answers = []
