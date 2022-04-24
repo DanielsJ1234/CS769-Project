@@ -1,0 +1,2003 @@
+
+sum
+sum
+nom mult
+sum
+list
+mult
+amb
+
+amb
+mult
+
+mult
+mult
+mult nom
+mult
+mult
+sum
+sum
+sum
+rep
+
+sum
+sum
+sum
+mult sum
+sum
+mult
+
+mult
+
+amb sum
+mult
+sum
+sum
+rep
+mult
+sum
+mult sum
+mult
+
+
+
+sum
+sum
+amb
+sum
+mult sum
+list
+sum rep
+mult
+mult amb
+nom mult
+
+list
+sum
+sum
+
+rep
+amb
+mult sum
+list sum
+mult sum
+sum
+sum
+rep
+sum
+mult
+sum
+mult
+
+sum mult
+mult sum
+mult amb
+sum
+
+sum
+sum
+mult
+
+sum
+list
+rep list
+mult
+sum
+
+sum
+sum mult
+sum
+sum
+mult sum
+mult
+sum
+sum
+amb
+
+rep mult
+mult sum
+sum
+sum
+mult
+list rep
+mult
+
+mult sum
+
+sum
+mult
+sum rep
+mult
+
+sum
+mult
+sum
+sum
+amb
+sum
+mult
+sum
+
+
+sum
+mult sum
+sum
+mult
+mult 
+sum
+
+mult sum
+list rep
+
+mult sum rep
+sum
+mult
+
+
+
+sum
+mult
+sum rep
+mult
+mult sum
+sum
+
+mult sum
+sum
+
+mult 
+sum
+
+rep sum
+mult
+sum
+mult 
+
+mult
+sum mult
+sum
+sum
+mult
+mult
+sum
+mult
+mult sum
+mult list
+sum
+mult
+
+sum
+sum
+
+mult
+nom mult
+mult sum
+sum
+mult
+sum
+mult sum
+
+sum
+sum inf
+sum mult
+mult sum
+mult
+sum
+mult amb
+mult
+mult sum
+sum
+list
+sum
+mult sum
+sum
+sum
+sum
+rep
+
+
+sum
+mult
+rep
+sum
+mult
+mult sum
+sum nom
+mult sum
+mult
+mult nom
+sum
+mult
+
+nom
+mult
+mult sum
+list rep
+
+mult
+nom sum error
+rep
+sum rep mult
+mult rep
+
+mult sum
+sum
+sum
+sum
+sum
+mult sum
+mult sum
+list sum
+mult list
+sum
+sum
+sum ent
+mult
+mult sum
+mult sum
+list amb
+
+mult sum
+sum list
+sum
+mult
+
+sum nom
+
+mult
+mult 
+mult
+mult nom
+mult
+sum
+mult
+sum
+rep
+mult sum
+
+sum
+mult sum
+mult
+mult
+
+sum
+
+mult nom sum
+mult
+rep mult
+mult sum
+
+mult sum
+rep sum
+
+
+sum
+mult sum
+rep list
+amb
+
+
+sum
+amb
+sum
+mult
+
+sum
+mult
+rep sum
+sum mult
+
+
+sum
+mult
+
+mult sum nom
+sum
+
+rep
+nom
+sum
+sum
+list sum
+sum
+mult
+sum
+mult
+mult
+
+mult sum
+sum rep
+nom mult sum
+sum
+mult sum
+mult sum
+rep
+
+sum
+mult
+mult sum
+sum
+mult
+sum
+list rep
+sum
+sum
+sum
+
+
+sum
+sum
+sum
+sum mult
+
+mult sum
+sum rep
+sum
+sum
+sum
+mult sum
+
+sum
+sum
+mult
+mult sum
+
+sum
+sum
+mult
+sum
+rep sum
+
+
+sum
+sum
+sum
+mult sum
+sum
+mult sum
+sum
+sum nom
+sum
+
+mult sum inf
+
+
+
+mult list sum
+amb
+mult sum
+mult sum
+sum
+
+sum
+mult
+sum
+amb
+rep
+sum mult
+sum
+sum
+mult
+
+list rep
+
+mult sum
+
+
+sum rep
+sum
+mult
+sum
+sum
+sum rep
+
+mult sum
+
+sum
+sum
+rep
+list rep
+rep sum
+sum
+sum
+sum
+
+sum
+sum rep list
+mult sum
+sum
+mult sum
+sum
+
+mult
+mult
+
+mult inf
+rep list
+mult sum
+sum
+mult
+
+rep
+
+mult
+mult 
+mult sum
+sum
+mult
+mult
+mult
+list rep
+sum
+mult
+sum
+sum
+amb
+mult
+sum
+mult
+mult
+list rep
+amb
+sum
+amb
+sum
+sum mult
+mult sum
+
+sum
+mult
+mult
+
+mult
+sum
+sum
+
+sum
+mult
+mult
+sum
+sum
+
+error
+sum
+mult
+mult
+sum
+ent
+
+mult
+
+inf amb
+sum
+rep sum
+sum
+sum mult
+rep
+
+amb
+sum
+sum
+amb
+mult
+mult sum nom
+
+sum
+list rep
+sum
+mult
+
+
+rep
+sum mult
+
+
+amb
+
+sum
+mult
+
+
+sum inf
+inf sum
+mult
+sum
+sum
+
+nom sum inf
+sum inf
+sum
+
+sum
+mult
+
+sum inf nom
+nom
+mult sum
+sum
+
+rep
+mult
+sum
+
+
+mult
+mult nom
+list rep
+inf sum
+sum inf
+
+mult
+sum
+sum
+amb
+
+mult
+mult
+mult
+sum
+sum
+
+mult
+mult sum
+nom sum
+inf
+sum
+
+inf sum
+mult
+ent sum
+sum
+sum
+
+
+
+mult sum
+mult sum
+amb
+rep
+inf
+mult
+
+sum inf
+nom sum
+sum
+error list rep
+
+ent rep sum
+mult
+inf mult
+sum
+inf nom
+mult
+amb
+sum
+mult
+sum inf
+rep
+sum
+
+
+mult
+rep
+inf
+inf
+
+mult sum
+
+
+sum inf
+mult
+mult inf
+amb inf
+
+
+inf
+mult
+mult
+mult
+inf
+inf
+sum
+inf nom mult
+
+mult nom
+
+nom
+mult sum
+mult
+sum nom
+mult sum
+sum
+
+sum
+mult sum
+sum inf
+amb
+
+
+inf sum
+
+sum
+mult sum
+error
+
+
+mult nom inf
+nom
+mult
+sum
+sum
+nom amb
+amb
+nom sum
+mult
+sum
+sum
+mult
+error amb
+nom
+sum
+mult
+
+mult inf
+sum nom
+rep list
+mult
+mult sum
+sum
+mult sum
+
+
+
+amb sum
+mult nom
+ent sum
+rep
+nom rep
+sum
+rep list
+sum nom
+mult inf nom
+mult
+inf
+mult
+inf nom
+
+
+mult sum inf
+mult nom inf
+mult
+
+sum
+mult sum
+
+mult
+mult
+mult nom inf
+ent
+rep sum
+nom inf sum
+inf sum
+sum
+
+mult
+mult
+inf nom
+amb nom error
+mult
+mult nom
+mult sum
+mult inf
+ent rep
+mult
+mult
+sum ent
+nom inf mult
+rep mult ent
+amb
+nom inf
+inf
+mult ent rep
+nom inf list rep
+nom
+
+mult nom
+nom sum
+mult
+mult sum
+mult nom
+mult
+
+nom
+sum
+mult
+amb
+mult inf
+nom
+nom mult
+mult nom
+mult
+inf nom
+rep
+
+amb
+rep sum
+
+mult nom
+mult
+nom sum
+mult nom
+rep
+
+amb
+amb
+mult amb
+mult nom
+
+nom rep list
+mult
+ent nom
+nom
+mult nom
+mult
+nom
+sum
+mult
+mult
+mult
+amb
+mult error amb
+nom
+nom
+error inf nom
+
+amb sum
+amb sum
+rep list mult
+ent error
+mult nom inf
+
+mult nom
+mult
+
+mult
+amb nom sum
+
+
+mult nom
+amb rep
+mult
+nom
+nom
+nom
+mult
+nom
+
+mult
+mult
+nom mult
+ent nom
+nom
+mult nom
+nom amb
+
+sum
+
+sum ent
+
+nom
+
+mult
+ent inf
+mult
+mult nom
+
+amb
+mult nom
+nom
+nom
+
+
+sum
+
+ent
+sum
+amb
+sum
+mult
+mult
+
+nom
+inf nom
+amb error
+
+
+mult nom
+
+
+
+nom
+
+nom amb
+sum
+amb
+mult amb
+
+error amb
+error amb
+
+
+ent nom
+nom
+sum rep
+
+sum
+
+sum
+nom
+mult amb error
+
+
+sum
+
+sum
+
+
+
+nom rep list
+sum
+amb
+sum inf
+
+sum
+
+nom
+rep list
+
+rep
+nom
+
+
+rep sum
+
+sum
+list rep nom
+mult
+
+
+ent
+
+nom
+amb nom
+ent
+sum inf
+nom inf
+
+
+ent sum
+inf nom
+inf
+ent sum
+sum
+
+rep list
+
+
+
+inf
+sum nom
+nom
+
+nom
+inf
+nom sum
+inf
+nom
+ent
+inf
+amb
+ent
+
+
+mult
+
+nom inf
+inf
+rep
+nom
+rep
+sum
+
+sum
+inf
+inf rep
+mult
+amb
+nom
+
+
+rep ent
+rep ent
+rep inf
+ent
+
+sum
+amb nom
+amb
+
+
+sum
+nom inf
+nom
+nom
+mult
+rep
+mult
+mult
+mult
+
+nom
+amb nom
+mult
+nom
+
+inf
+nom inf
+sum rep inf
+inf
+ent sum
+sum
+
+rep nom
+
+nom
+nom ent
+
+
+sum
+nom
+list nom
+nom inf amb
+
+amb nom
+sum amb
+
+amb
+sum
+
+rep nom
+nom
+sum nom
+inf nom
+sum
+amb nom
+rep sum
+nom
+amb rep
+
+nom mult
+nom inf
+nom list rep
+
+
+sum
+
+inf sum
+inf nom
+nom
+inf
+
+nom
+
+ent
+nom
+sum
+
+inf mult
+mult
+
+inf
+sum
+ent
+error
+inf mult
+
+
+
+inf
+ent
+nom amb
+inf
+nom
+error
+ent
+inf
+nom
+
+nom mult
+rep
+inf
+rep list
+mult
+
+inf
+ent list
+sum
+nom rep
+
+amb
+
+mult
+sum
+
+
+ent
+
+inf
+sum
+sum
+
+amb
+nom inf
+sum mult
+
+
+amb
+
+rep inf
+mult sum
+inf
+sum
+amb
+inf mult
+ent rep
+nom
+nom
+
+amb
+nom
+inf
+inf
+amb
+nom
+rep inf ent
+mult
+mult
+nom
+nom
+amb sum
+nom
+
+inf
+inf
+
+inf nom
+nom
+mult
+
+inf nom
+
+inf mult
+
+mult
+list rep
+nom inf
+nom inf
+
+amb
+amb
+nom
+amb
+inf
+mult
+nom
+
+list rep nom
+
+mult
+inf
+
+nom sum
+mult
+nom
+ent sum nom
+
+inf nom sum
+
+nom
+mult inf
+
+mult inf
+
+sum nom
+
+
+
+
+error
+
+
+
+nom sum
+inf nom
+inf
+nom
+nom mult
+rep
+rep list
+nom amb
+nom
+
+sum
+
+ent nom
+
+rep inf
+
+inf
+sum
+mult
+mult
+nom
+nom inf
+nom inf sum
+
+
+
+
+
+nom inf rep
+nom inf
+mult inf rep
+
+
+nom
+nom
+nom
+
+
+
+mult
+inf
+
+nom
+
+ent rep
+
+sum nom
+inf nom
+mult
+rep inf
+amb
+
+rep inf
+inf
+
+sum
+
+
+mult
+inf nom
+sum
+
+
+inf
+inf
+
+inf
+mult
+
+
+inf nom
+inf
+rep list
+
+
+rep inf
+mult
+
+mult
+
+ent
+
+inf
+
+
+ent
+mult
+amb nom
+
+inf
+inf
+amb
+nom inf
+nom
+mult
+
+
+
+inf nom
+inf
+ent
+
+
+amb
+
+
+inf nom
+
+nom
+nom inf
+mult amb
+sum
+inf ent
+inf
+
+amb sum
+inf
+inf nom
+inf nom
+mult
+
+mult
+
+nom
+inf nom
+error
+inf nom
+list
+
+inf nom
+mult
+inf nom mult
+nom
+
+
+sum
+
+inf
+mult
+amb
+mult inf
+inf mult sum
+mult
+inf nom
+
+
+
+inf
+amb
+amb ent
+nom
+inf
+inf
+mult
+
+inf
+
+nom
+inf
+inf
+rep mult
+inf
+
+sum
+ent
+amb
+nom
+
+amb
+
+rep list sum
+
+
+rep
+
+
+inf nom
+rep inf
+inf nom
+inf
+nom
+nom
+inf nom rep
+inf
+ent amb
+
+mult
+
+rep inf
+
+rep
+mult
+rep
+inf
+rep
+nom
+rep
+rep nom
+amb
+
+inf sum
+
+ent
+rep
+ent inf
+
+
+
+
+ent mult
+
+
+rep
+nom
+rep mult
+inf
+ent
+inf sum
+inf
+nom inf
+rep
+inf
+sum
+mult
+mult
+amb
+ent nom
+ent inf
+mult
+amb
+inf sum
+
+inf
+rep
+
+inf
+
+nom sum
+
+sum mult inf
+rep list
+
+
+mult
+sum
+inf
+rep
+mult
+mult inf
+
+
+rep
+ent nom
+
+nom
+
+
+sum
+
+inf ent
+mult nom
+mult
+inf rep
+
+nom
+
+amb
+inf sum
+
+inf nom
+
+mult
+nom
+
+
+ent rep
+
+rep nom
+inf
+
+sum
+mult inf
+nom
+ent
+
+nom inf
+
+
+
+inf
+amb
+nom
+inf
+nom
+
+
+amb
+mult
+ent
+amb nom
+
+
+
+amb
+
+sum inf
+
+ent
+ent
+amb
+inf
+
+amb inf
+
+nom amb mult
+inf
+ent
+inf nom
+mult
+mult
+
+
+inf
+mult
+nom mult
+amb
+rep inf
+mult
+
+
+inf
+ent
+mult nom
+nom
+
+inf
+mult
+amb
+
+sum
+sum inf
+
+
+amb
+mult
+inf
+
+amb
+
+sum
+rep list
+rep list
+mult
+inf
+
+inf nom
+
+amb inf
+
+amb
+inf
+
+
+nom
+nom
+mult
+
+sum
+amb
+inf nom
+
+nom
+
+
+ent nom
+amb
+inf list mult
+
+
+
+amb
+
+
+
+mult nom
+
+
+nom sum inf
+amb
+inf nom
+nom inf ent
+mult inf nom
+nom
+
+inf sum
+amb
+sum
+inf
+
+inf nom
+inf
+
+nom
+inf
+amb
+mult
+nom mult
+nom
+rep
+amb
+list rep amb
+inf
+amb ent
+
+sum
+sum
+
+mult inf
+sum
+
+
+nom
+
+mult
+
+
+ent
+
+mult
+
+mult
+nom sum
+
+sum
+list rep
+rep sum
+
+inf
+nom
+
+mult
+
+amb
+nom
+inf nom
+sum
+nom
+nom inf
+mult
+mult sum
+inf
+nom inf
+
+inf
+nom inf
+amb
+inf sum
+
+inf rep
+inf nom
+
+rep inf
+
+list rep
+
+inf
+
+mult
+sum
+mult inf
+
+
+
+inf
+inf
+sum
+inf mult
+
+inf
+error
+inf
+
+sum
+
+mult
+ent
+
+rep
+inf
+
+rep list
+
+rep inf
+
+inf
+
+nom
+sum
+nom inf
+inf sum
+rep error
+ent
+inf
+nom
+sum
+
+inf ent
+
+
+nom
+nom
+
+
+
+
+mult
+rep
+inf
+
+
+ent
+nom
+nom
+inf mult
+nom inf
+nom
+ inf
+
+nom
+
+
+
+
+
+amb sum nom
+sum
+amb
+mult
+inf nom
+mult inf
+
+inf
+
+inf nom
+inf
+inf nom
+
+
+
+
+sum
+sum ent
+inf
+
+
+
+amb
+
+mult nom
+inf ent
+nom
+inf nom
+ent
+inf
+rep list
+
+sum
+inf
+inf nom
+mult
+
+
+error
+amb
+nom inf
+nom inf
+sum
+nom
+
+
+
+
+inf nom
+inf nom
+mult
+list rep
+amb
+inf
+
+mult
+mult
+inf
+rep sum
+inf mult
+inf
+inf nom
+inf nom
+ent mult
+mult
+sum
+ent inf
+ent sum
+
+inf
+sum
+sum
+
+
+nom
+
+mult sum
+
+inf sum
+sum mult
+inf
+list rep inf
+
+error
+inf sum
+
+nom
+inf
+
+inf nom
+sum amb
+inf nom
+ent
+rep
+inf nom
+nom
+
+
+inf nom
+inf nom sum
+amb
+sum
+nom
+sum
+amb
+inf nom
+
+
+nom
+mult
+inf
+nom
+ent
+
+
+
+
+
+amb
+mult
+nom
+nom rep list
+sum
+
+
+
+mult
+
+sum
+mult
+inf
+inf nom
+mult inf
+ent
+
+
+sum
+ent
+sum
+nom
+
+inf
+rep
+nom sum
+amb
+sum
+amb
+sum
+sum
+
+
+sum
+nom
+
+inf
+nom
+amb
+mult
+amb
+sum
+amb
+nom
+inf
+inf
+ent
+
+inf
+
+ent
+amb
+nom
+rep list
+error
+inf
+nom
+
+rep ent
+mult
+inf ent
+nom
+inf
+inf nom
+amb
+inf
+nom
+
+amb
+mult
+
+inf
+list rep
+inf
+amb
+inf
+sum
+sum
+list rep inf
+nom
+inf
+inf
+inf
+inf
+
+inf nom
+inf
+inf
+
+
+rep
+inf
+inf nom
+amb
+inf nom
+amb
+error
+inf
+
+
+sum
+nom rep
+amb
+mult
+
+
+nom
+inf
+inf
+rep
+mult
+amb
+rep sum
+rep
+
+rep
+
+rep
+
+ent
+
+inf
+
+
+
+nom
+
+sum
+sum
+
+nom inf
+ent nom
+amb
+
+
+mult
+
+
+mult
+mult
+amb
+amb
+nom inf
+
+inf nom
+
+amb
+nom
+
+inf
+rep
+nom
+amb mult
+
+amb
+nom inf
+inf 
+nom inf
+inf
+inf
+
+mult
+sum
+inf
+mult
+
+amb
+amb
+nom amb
+
+
+ent
+rep
+ent
+sum
+nom inf
+amb
+
+nom
+nom inf
+ent
+nom
+inf nom
+
+
+nom inf
+inf
+nom
+
+sum
+
+mult
+mult
+inf
+amb ent
+nom
+
+nom
+nom inf
+sum
+nom inf
+mult
+nom
+
+ent
+mult
+list rep inf
+nom inf
+inf nom
+inf
+sum
+inf nom
+sum
+
+nom
+nom rep
+
+inf
+
+rep
+
+mult ent
+mult
+nom inf
+
+
+
+
+mult
+inf
