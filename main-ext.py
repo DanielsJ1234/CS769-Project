@@ -172,10 +172,6 @@ def main(model_args, data_args, training_args):
         print(metrics_formatted)
         save_json(metrics, os.path.join(training_args.output_dir, "test_results.json"))
 
-        print("writing base pred file")
-        with open("test.txt", "w") as writer:
-            writer.write("\n".join(test_results.predictions))
-
         print("generating predictions")
         test_preds = tokenizer.batch_decode(test_results.predictions, skip_special_tokens=True, clean_up_tokenization_spaces=True)
         test_preds = [pred.strip() for pred in test_preds]
