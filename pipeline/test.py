@@ -65,7 +65,7 @@ def predict(table_data, queries):
   write_tf_example("results/wtq-tiny/tf_examples/test.tfrecord", examples)
   write_tf_example("results/wtq-tiny/tf_examples/random-split-1-dev.tfrecord", [])
   
-  ! python -m tapas.run_task_main \
+  os.system('python -m tapas.run_task_main \
     --task="WTQ-TINY" \
     --output_dir="results" \
     --noloop_predict \
@@ -74,7 +74,7 @@ def predict(table_data, queries):
     --compression_type= \
     --init_checkpoint="tapas_wtq_wikisql_sqa_inter_masklm_tiny_reset/model.ckpt" \
     --bert_config_file="tapas_wtq_wikisql_sqa_inter_masklm_tiny_reset/bert_config.json" \
-    --mode="predict" 2> error
+    --mode="predict" 2> error')
 
 
   results_path = "results/wtq-tiny/model/test_sequence.tsv"
