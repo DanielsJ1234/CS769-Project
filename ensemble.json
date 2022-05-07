@@ -1,8 +1,8 @@
 {
 
-    "output_dir":"checkpoints/Bart_Tok",
+    "output_dir":"Ensemble_output",
     "overwrite_output_dir":false,
-    "do_train" : true,
+    "do_train" : false,
     "do_eval":false,
     "do_predict":true,
     "num_train_epochs":10,              
@@ -17,7 +17,11 @@
 
 
 
-    "model_name_or_path":"facebook/bart-large-cnn",
+    "model_1_name_or_path":"/home/sandysingh4545/cs769-p4/CS769-Project/checkpoints/Bart/checkpoint-18000",
+    "tokenizer_1_name":"t5-small",
+    "model_2_name_or_path":"/home/sandysingh4545/cs769-p4/CS769-Project/checkpoints/T5-base/checkpoint-18320",
+
+
 
     "train_file":"data/fetaQA-v1_train.json",
     "validation_file":"data/fetaQA-v1_dev.json",

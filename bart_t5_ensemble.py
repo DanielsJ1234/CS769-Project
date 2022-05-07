@@ -10,11 +10,13 @@ import torch
 from dataclasses import dataclass
 
 from transformers import (
+    T5Tokenizer,
     AutoTokenizer,
     AutoConfig,
-    AutoModel,
+    AutoModelForSeq2SeqLM,
     BartForConditionalGeneration,
     HfArgumentParser,
+    Seq2SeqTrainer,
     Trainer,
     Seq2SeqTrainingArguments,
     default_data_collator,
@@ -24,11 +26,17 @@ from transformers.trainer_utils import (
     get_last_checkpoint,
 )
 
+
+
+
 @dataclass
 class ModelArguments:
-    model_name_or_path: str
-    config_name: Optional[str] = None
-    tokenizer_name: Optional[str] = None
+    model_1_name_or_path: str
+    model_2_name_or_path: str
+    config_1_name: Optional[str] = None
+    config_2_name: Optional[str] = None
+    tokenizer_1_name: Optional[str] = None
+    tokenizer_2_name: Optional[str] = None
     use_fast_tokenizer: bool = True
 
 @dataclass
@@ -50,7 +58,6 @@ class DataTrainingArguments:
     max_train_samples: Optional[int] = None
     max_val_samples: Optional[int] = None
     max_test_samples: Optional[int] = None
-
 
 
 def save_json(content, path, indent=4, **json_dump_kwargs):
@@ -111,15 +118,24 @@ def preprocess(model_args, data_args, training_args, datasets,tokenizer):
         )
     return train_dataset, eval_dataset, test_dataset
 
+
+
+
 def main(model_args, data_args, training_args):
-    tokenizer = AutoTokenizer.from_pretrained(
-        model_args.tokenizer_name if model_args.tokenizer_name else model_args.model_name_or_path,
+
+
+    tokenizer_bart = AutoTokenizer.from_pretrained(
+        model_args.tokenizer_1_name if model_args.tokenizer_1_name else model_args.model_1_name_or_path,
         cache_dir=None,
         use_fast=model_args.use_fast_tokenizer,
         revision="main",
         use_auth_token=None,
     )
-    tokenizer.add_special_tokens({'cls_token':'[CLS]','sep_token':'[SEP]'})
+    tokenizer_bart.add_special_tokens({'cls_token':'[CLS]','sep_token':'[SEP]'})
+
+    tokenizer_t5 = T5Tokenizer.from_pretrained('t5-small')
+    tokenizer_t5.add_special_tokens({'cls_token':'[CLS]','sep_token':'[SEP]'})
+
     data_files = {}
     train_file = "data/fetaQA-v1_train.json"
     data_files["train"] = train_file
@@ -134,150 +150,121 @@ def main(model_args, data_args, training_args):
         data_args, 
         training_args, 
         datasets, 
-        tokenizer)
+        tokenizer_bart)
 
-    config = AutoConfig.from_pretrained(
-        model_args.config_name if model_args.config_name else model_args.model_name_or_path,
+
+    config_bart = AutoConfig.from_pretrained(
+        model_args.config_1_name if model_args.config_1_name else model_args.model_1_name_or_path,
         cache_dir=None,
         revision="main",
         use_auth_token=None,
     )
-    config.task_specific_params['summarization']['prefix'] = "summarize: "
-    config.prefix =  "summarize: "
+    config_bart.task_specific_params['summarization']['prefix'] = "summarize: "
+    config_bart.prefix =  "summarize: "
 
-    # # config.d_model = 768
-    # config.activation_function = "relu"
-    # # config.decoder_attention_heads = 12
-    # # config.encoder_attention_heads = 12
-    # config.decoder_start_token_id = 0
-    # config.eos_token_id = 1
-    # config.pad_token_id = 0
-    # config.task_specific_params['summarization']['max_length'] = 200
-    # config.task_specific_params['summarization']['min_length'] = 30
-    # # config.vocab_size = 32128
-    # config.max_length = 200
-    # config.min_length = 30
-
-    model = BartForConditionalGeneration.from_pretrained(
-                model_args.model_name_or_path,
-                from_tf=bool(".ckpt" in model_args.model_name_or_path),
-                config=config,
+    model_bart = BartForConditionalGeneration.from_pretrained(
+                model_args.model_1_name_or_path,
+                from_tf=bool(".ckpt" in model_args.model_1_name_or_path),
+                config=config_bart,
                 cache_dir=None,
                 revision="main",
                 use_auth_token=None,
             )
-    if data_args.linearization_strategy != 'concat':
-        model.resize_token_embeddings(len(tokenizer))
-    trainer = Trainer(
-            model = model,
+
+    # if data_args.linearization_strategy != 'concat':
+    #     model_bart.resize_token_embeddings(len(tokenizer_bart))
+    # trainer_bart = Trainer(
+    #         model = model_bart,
+    #         args=training_args,
+    #         train_dataset=train_dataset if training_args.do_train else None,
+    #         eval_dataset=eval_dataset if training_args.do_eval else None,
+    #         tokenizer=tokenizer_bart,
+    #         data_collator=default_data_collator,
+    #     )
+
+    trainer_bart = Seq2SeqTrainer(
+            model = model_bart,
             args=training_args,
             train_dataset=train_dataset if training_args.do_train else None,
             eval_dataset=eval_dataset if training_args.do_eval else None,
-            tokenizer=tokenizer,
+            tokenizer=tokenizer_bart,
             data_collator=default_data_collator,
         )
-    best_run = None
-    last_checkpoint = None
-    if os.path.isdir(training_args.output_dir) and training_args.do_train and not training_args.overwrite_output_dir:
-            last_checkpoint = get_last_checkpoint(training_args.output_dir)
+
+    config_t5 = AutoConfig.from_pretrained(
+        model_args.model_2_name_or_path,
+        cache_dir=None,
+        revision="main",
+        use_auth_token=None,
+    )
+    model_t5 = AutoModelForSeq2SeqLM.from_pretrained(
+                model_args.model_2_name_or_path,
+                from_tf=bool(".ckpt" in model_args.model_2_name_or_path),
+                config=config_t5,
+                cache_dir=None,
+                revision="main",
+                use_auth_token=None,
+            )
     
-    all_metrics = {}
-    if training_args.do_train:
-        if last_checkpoint is not None:
-            checkpoint = last_checkpoint
-        elif os.path.isdir(model_args.model_name_or_path):
-            checkpoint = model_args.model_name_or_path
-        else:
-            checkpoint = None
-
-        train_result = trainer.train(resume_from_checkpoint=checkpoint) if best_run is None else trainer.train()
-        trainer.save_model()
-
-        metrics = train_result.metrics
-        metrics["train_samples"] = len(train_dataset)
-        if trainer.is_world_process_zero():
-            metrics_formatted = trainer.metrics_format(metrics)
-            print("***** train metrics *****")
-            print(metrics_formatted)
-            save_json(metrics, os.path.join(training_args.output_dir, "train_results.json"))
-            trainer.state.save_to_json(os.path.join(training_args.output_dir, "trainer_state.json"))
-            all_metrics.update(metrics)
-
-    # torch.cuda.empty_cache()
-    if training_args.do_eval:
-        print("*** Evaluate ***")
-        metrics = trainer.evaluate(
-            eval_dataset = eval_dataset, metric_key_prefix="eval"
+    trainer_t5 = Seq2SeqTrainer(
+            model=model_t5,
+            args=training_args,
+            train_dataset=train_dataset if training_args.do_train else None,
+            eval_dataset=None,
+            tokenizer=tokenizer_t5,
+            data_collator=default_data_collator,
         )
-        max_val_samples = data_args.max_val_samples if data_args.max_val_samples is not None else len(eval_dataset)
-        metrics["eval_samples"] = min(max_val_samples, len(eval_dataset))
+    print("*** Test ***")
 
-        if trainer.is_world_process_zero():
-            metrics_formatted = trainer.metrics_format(metrics)
-            print("***** val metrics *****")
-            k_width = max(len(str(x)) for x in metrics_formatted.keys())
-            v_width = max(len(str(x)) for x in metrics_formatted.values())
-            for key in sorted(metrics_formatted.keys()):
-                print(str(key) + " " * (k_width - len(key)) + ": " + str(metrics_formatted[key]) + " " * (v_width - len(str(metrics_formatted[key]))))
-            save_json(metrics, os.path.join(training_args.output_dir, "eval_results.json"))
-            all_metrics.update(metrics)
+    test_dataset_batch = test_dataset.select(range(0,128))
 
+    # test_results_bart = trainer_bart.predict(test_dataset_batch, metric_key_prefix="test",)
+    test_results_bart = trainer_bart.predict(
+        test_dataset_batch,
+        metric_key_prefix="test",
+        max_length=data_args.max_target_length,
+        num_beams=None,
+    )
+    test_results_t5 = trainer_t5.predict(
+        test_dataset_batch,
+        metric_key_prefix="test",
+        max_length=data_args.max_target_length,
+        num_beams=None,
+    )
 
-    if training_args.do_predict:
-        print("*** Test ***")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    raw_logits_bart = test_results_bart.predictions[0]
+    raw_logits_t5 = test_results_t5.predictions[0]
+    raw_logits_t5 = raw_logits_t5[:,:,: raw_logits_bart.shape[-1]]
 
-        raw_logits = None
-        test_results = None
-        # for i in range(int(len(test_dataset)/128)):
-        #     test_dataset_batch = test_dataset.select(range(i*128,(i+1)*128))
-        #     test_results = trainer.predict(test_dataset_batch, metric_key_prefix="test",)
-        #     if raw_logits is None:
-        #         raw_logits = test_results.predictions[0]
-        #     else:
-        #         raw_logits = np.vstack((raw_logits, test_results.predictions[0]))
-        # torch.cuda.empty_cache()
-        
+    # # final_raw_logits = np.maximum(raw_logits_bart, raw_logits_t5)
+    raw_logits_t5 = torch.from_numpy(raw_logits_t5).to(device)
+    raw_logits_bart = torch.from_numpy(raw_logits_bart).to(device)
+    
 
-        # test_dataset_batch = test_dataset.select(range(0,128))
+    log_probs_bart = torch.nn.functional.log_softmax(raw_logits_bart, dim=-1)
+    log_probs_t5 = torch.nn.functional.log_softmax(raw_logits_t5, dim=-1)
+    final_raw_logits = torch.max(log_probs_bart, log_probs_t5)
 
-        test_results = trainer.predict(test_dataset, metric_key_prefix="test",)
-
-        if raw_logits is None:
-            raw_logits = test_results.predictions[0]
-        else:
-            raw_logits = np.vstack((raw_logits, test_results.predictions[0]))
-
-        metrics = test_results.metrics
-
-        max_test_samples = data_args.max_test_samples if data_args.max_test_samples is not None else len(test_dataset)
-        metrics["test_samples"] = min(max_test_samples, len(test_dataset))
-
-
-        if trainer.is_world_process_zero():
-            metrics_formatted = trainer.metrics_format(metrics)
-            print("***** test metrics *****")
-            print(metrics_formatted)
-            save_json(metrics, os.path.join(training_args.output_dir, "test_results.json"))
-            all_metrics.update(metrics)
-            print("generating predictions")
-            raw_preds = np.argmax(raw_logits, axis = -1)
-            test_preds = tokenizer.batch_decode(raw_preds, skip_special_tokens=True, clean_up_tokenization_spaces=True)
-            test_preds = [pred.strip() for pred in test_preds]
-            
-            answers = []
-            with open(test_file) as f:
-                data = json.load(f)
-                for i in data["data"]:
-                    answers.append(i["answer"])
-            output_test_preds_file = os.path.join(training_args.output_dir, "test_preds_seq2seq2.txt")
-            print("writing output file")
-            with open(output_test_preds_file, "a+") as writer:
-                writer.write("\n".join(test_preds))
-            with open(output_test_preds_file, "a+") as writer:
-                writer.write("\n")
-            print("running metrics")
-            b_score(test_preds, answers) # unable to run on GPU, will need to process manually later
-            sacrebleu_score(test_preds, answers)
+    print("generating predictions")
+    raw_preds = torch.argmax(final_raw_logits, dim=-1)
+    test_preds = tokenizer_t5.batch_decode(raw_preds, skip_special_tokens=True, clean_up_tokenization_spaces=True)
+    test_preds = [pred.strip() for pred in test_preds]
+    
+    answers = []
+    with open(test_file) as f:
+        data = json.load(f)
+        for i in data["data"]:
+            answers.append(i["answer"])
+    output_test_preds_file = os.path.join(training_args.output_dir, "test_preds_seq2seq2.txt")
+    print("writing output file")
+    with open(output_test_preds_file, "a+") as writer:
+        writer.write("\n".join(test_preds))
+    with open(output_test_preds_file, "a+") as writer:
+        writer.write("\n")
+    print("running metrics")
+    b_score(test_preds, answers) # unable to run on GPU, will need to process manually later
+    sacrebleu_score(test_preds, answers)
 
 def getCompareData(pred_file, test_file):
     preds = []
