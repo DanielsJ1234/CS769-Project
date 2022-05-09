@@ -65,11 +65,11 @@ def predict(table_data, queries):
   write_tf_example("results/wtq-tiny/tf_examples/test.tfrecord", examples)
   write_tf_example("results/wtq-tiny/tf_examples/random-split-1-dev.tfrecord", [])
   
-  os.system(f'python -m tapas.run_task_main \
+  os.system('python -m tapas.run_task_main \
     --task="WTQ-TINY" \
     --output_dir="results" \
     --noloop_predict \
-    --test_batch_size={len(queries)} \
+    --test_batch_size=3 \
     --tapas_verbosity="ERROR" \
     --compression_type= \
     --init_checkpoint="tapas_wtq_wikisql_sqa_inter_masklm_tiny_reset/model.ckpt" \
